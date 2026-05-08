@@ -36,7 +36,6 @@ const els = {
   liveScore: document.querySelector("#live-score"),
   progressFill: document.querySelector("#progress-fill"),
   subjectName: document.querySelector("#subject-name"),
-  topicName: document.querySelector("#topic-name"),
   questionText: document.querySelector("#question-text"),
   choices: document.querySelector("#choices"),
   feedback: document.querySelector("#feedback"),
@@ -157,7 +156,6 @@ function renderQuestion() {
   els.liveScore.textContent = `정답 ${state.correct}`;
   els.progressFill.style.width = `${(state.currentIndex / state.questions.length) * 100}%`;
   els.subjectName.textContent = question.subjectName;
-  els.topicName.textContent = question.topic;
   els.questionText.textContent = question.question;
   els.choices.innerHTML = "";
   els.feedback.className = "feedback hidden";
