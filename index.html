@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1f6feb" />
+    <title>정보처리기사 CBT 짜투리 학습</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">D-13 CBT Sprint</p>
+          <h1>정보처리기사 필기 짜투리 학습</h1>
+          <p class="lead">일하는 중간중간 바로 풀고, 틀린 문제는 자동으로 모아 다시 복습합니다.</p>
+        </div>
+        <div class="exam-rule">
+          <strong>실전 기준</strong>
+          <span>5과목 × 20문제</span>
+          <span>과목 40점 이상</span>
+          <span>평균 60점 이상</span>
+        </div>
+      </section>
+
+      <section id="dashboard" class="dashboard" aria-label="학습 모드 선택">
+        <article class="mode-card">
+          <h2>실전 100문제</h2>
+          <p>각 과목에서 20문제씩 뽑아 실제 필기 구조로 풉니다.</p>
+          <button type="button" data-mode="exam">시작</button>
+        </article>
+        <article class="mode-card">
+          <h2>과목별 집중</h2>
+          <p>약한 과목만 20문제씩 반복해서 점검합니다.</p>
+          <select id="subject-select" aria-label="과목 선택"></select>
+          <button type="button" data-mode="subject">선택 과목 시작</button>
+        </article>
+        <article class="mode-card">
+          <h2>랜덤 연습</h2>
+          <p>전체 200문제 문제은행에서 20문제를 섞어 풉니다.</p>
+          <button type="button" data-mode="random">시작</button>
+        </article>
+        <article class="mode-card">
+          <h2>오답 복습</h2>
+          <p><span id="wrong-count">0</span>개의 저장된 오답을 다시 풉니다.</p>
+          <button id="wrong-mode-button" type="button" data-mode="wrong">복습 시작</button>
+        </article>
+      </section>
+
+      <section class="stats-strip" aria-label="누적 학습 통계">
+        <div><strong id="bank-count">200</strong><span>문제은행</span></div>
+        <div><strong id="total-solved">0</strong><span>누적 풀이</span></div>
+        <div><strong id="total-accuracy">0%</strong><span>누적 정확도</span></div>
+        <div><strong id="saved-wrong">0</strong><span>저장 오답</span></div>
+      </section>
+
+      <section id="concept-study" class="concept-study" aria-label="개념공부">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Concept Review</p>
+            <h2>개념공부</h2>
+          </div>
+          <select id="concept-subject-select" aria-label="개념공부 과목 선택"></select>
+        </div>
+        <div id="concept-list" class="concept-list"></div>
+      </section>
+
+      <section id="quiz-screen" class="quiz-screen hidden" aria-live="polite">
+        <div class="quiz-header">
+          <button id="back-button" type="button">대시보드</button>
+          <div>
+            <p id="session-mode" class="eyebrow">랜덤 연습</p>
+            <h2 id="session-title">문제 풀이</h2>
+          </div>
+          <div class="progress-box">
+            <strong id="question-position">1 / 20</strong>
+            <span id="live-score">정답 0</span>
+          </div>
+        </div>
+
+        <div class="progress-track" aria-hidden="true">
+          <div id="progress-fill"></div>
+        </div>
+
+        <article class="quiz-card">
+          <div class="question-meta">
+            <span id="subject-name"></span>
+            <span id="topic-name"></span>
+          </div>
+          <h2 id="question-text"></h2>
+          <div id="choices" class="choices"></div>
+          <div id="feedback" class="feedback hidden"></div>
+          <div class="actions">
+            <button id="next-button" type="button" disabled>다음 문제</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="result-screen" class="result-screen hidden" aria-live="polite">
+        <h2>결과</h2>
+        <p id="result-summary"></p>
+        <div id="subject-results" class="subject-results"></div>
+        <div class="result-actions">
+          <button id="retry-button" type="button">같은 모드 다시 풀기</button>
+          <button id="home-button" type="button">대시보드로 이동</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
